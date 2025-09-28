@@ -1,3 +1,38 @@
-king king
+C:\Windows\System32\cmd.exe
+wireless connect
 
-jing
+
+wireless
+adb devices
+adb kill-server
+adb start-server
+adb tcpip 5555
+adb connect 192.168.0.100:5555
+adb devices
+scrcpy -s 192.168.0.100:5555 --max-size 1024
+
+
+
+
+
+
+#adb help full command
+
+adb devices
+
+#in download mode
+adb reboot download
+
+#in twrp mode
+adb reboot recovery
+
+scrcpy --max-size 1024
+
+
+adb reboot --poweroff
+C:\Users\ACER-WIN10\Documents\GitHub\scrcpy-tips
+
+
+
+full resolution
+scrcpy --video-bit-rate 32M --window-width 1080
