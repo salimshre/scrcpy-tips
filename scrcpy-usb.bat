@@ -1,5 +1,5 @@
 @echo off
-cd /d C:\Users\ACER-WIN10\Documents\GitHub\scrcpy-tips\scrcpy-win64-v3.3.1
+cd /d C:\Users\hp\Documents\GitHub\scrcpy-tips\scrcpy-win64-v3.3.1
 
 :: Kill adb and restart fresh
 adb kill-server
