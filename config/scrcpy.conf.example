@@ -1,0 +1,7 @@
+# Copy this file to config/scrcpy.conf and adjust the values for your setup.
+PHONE_IP=192.168.0.100
+ADB_PORT=5555
+MAX_SIZE=1024
+MAX_FPS=60
+VIDEO_BIT_RATE=16M
+SCRCPY_DIR=scrcpy-win64-v3.3.1

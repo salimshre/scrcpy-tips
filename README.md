@@ -1,77 +1,53 @@
-# Scrcpy Windows Quick Reference
+﻿# Scrcpy Toolkit for Windows
 
-A quick reference guide for setting up and using [Scrcpy](https://github.com/Genymobile/scrcpy) on **Windows**, including installation, fullscreen mode, resolution settings, and wireless connection commands.
+This repository is a small Windows toolkit for launching [`scrcpy`](https://github.com/Genymobile/scrcpy) with easier USB and Wi-Fi workflows.
 
----
+The preferred entry point is `launch-scrcpy.bat`, which calls the main launcher in `scripts/scrcpy-launcher.bat`.
 
-## 📥 Download Scrcpy
-Get the latest release for Windows here:  
-[https://github.com/Genymobile/scrcpy/releases](https://github.com/Genymobile/scrcpy/releases)
+## What This Project Does
 
-Official Windows documentation:  
-[https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md)
+- Starts `scrcpy` over USB
+- Starts `scrcpy` over Wi-Fi
+- Enables ADB TCP/IP mode for wireless use
+- Keeps common setup commands in one place
 
----
+## Quick Start
 
-## ⚡ Basic Commands
+1. Enable USB debugging on your phone.
+2. Put the official Windows `scrcpy` release in either `scrcpy-win64-v3.3.1` or `vendor/scrcpy-win64-v3.3.1`.
+3. Update `config/scrcpy.conf` with your phone IP if needed.
+4. Run `launch-scrcpy.bat`.
 
-### **Fullscreen mode**
-```bash
-scrcpy -f
+## Repository Layout
 
+- `launch-scrcpy.bat`: simple root entry point
+- `scripts/scrcpy-launcher.bat`: configurable launcher with menu options
+- `config/scrcpy.conf`: local defaults for IP, port, and video settings
+- `config/scrcpy.conf.example`: reference config
+- `docs/quick-reference.md`: cleaned-up command notes
 
+Older root-level scripts and notes are still present as legacy files for compatibility with your existing setup.
 
+## Configuration
 
-Set resolution (lower for speed)
-bash
-Copy
-Edit
-scrcpy --max-size 1024
-📡 Wireless Mode (after initial USB connection)
-bash
-Copy
-Edit
-adb tcpip 5555
-adb connect PHONE_IP:5555
-scrcpy
-Example:
+The config file uses plain `KEY=VALUE` lines:
 
-bash
-Copy
-Edit
-adb tcpip 5555
-adb connect 192.168.0.100:5555
-scrcpy --max-size 1024
-🔧 Extra Useful Commands
-Limit resolution, set FPS, and adjust bitrate:
+```ini
+PHONE_IP=192.168.0.100
+ADB_PORT=5555
+MAX_SIZE=1024
+MAX_FPS=60
+VIDEO_BIT_RATE=16M
+SCRCPY_DIR=scrcpy-win64-v3.3.1
+```
 
-bash
-Copy
-Edit
-scrcpy --max-size 1024 --max-fps 60 --video-bit-rate 16M
-Fullscreen + resolution limit:
+## Useful Links
 
-bash
-Copy
-Edit
-scrcpy --max-size 1024 -f
-List connected devices:
+- [Scrcpy releases](https://github.com/Genymobile/scrcpy/releases)
+- [Official Windows documentation](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md)
 
-bash
-Copy
-Edit
-adb devices
-Revoke previous authorizations:
+## Next Improvements
 
-bash
-Copy
-Edit
-adb usb
-adb kill-server
-adb start-server
-📌 Notes
-Wireless mode only works when both your PC and phone are on the same network.
-
-Lowering resolution improves speed and reduces latency.
-
-You must have ADB installed (included with Scrcpy).
+- Convert the launcher to PowerShell for better prompts and validation
+- Add multiple saved phone profiles
+- Add connection troubleshooting output and logs
